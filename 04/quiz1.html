@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <title>문제소스</title>
+    <style>
+        #back, #next {
+            width: 15px;
+            height: 15px;
+        }
+        .title {
+            text-align: center;
+            font-size: 14px;
+        }
+        #wrap, #text {
+            text-align: center;
+        }
+        .imgs {
+            margin: 5px;
+            width: 100px;
+            height: 200px;
+            display: inline-block;
+        }
+        img {
+            width: 100px;
+            height: 100px;
+        }
+        #total {
+            color: gray;
+        }
+    </style>
+</head>
+<body>
+
+<div id="wrap"></div>
+
+<div id="text">
+    <img src="back.png" id="back">
+    &nbsp;
+    <span id="now">1</span>
+    <span id="total">/ 3</span>
+    &nbsp;
+    <img src="next.png" id="next">
+</div>
+
+<script src="quiz1.js"></script>
+
+</body>
+</html>
