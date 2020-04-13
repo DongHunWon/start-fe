@@ -1,6 +1,7 @@
 var board = document.getElementById("board");
-var index = 0
+
 function chessboard(){
+    var index = 0
     for(var i=0; i<4; i++){
         for(var j=0; j<4; j++){
             var span = document.createElement('span');
@@ -29,7 +30,7 @@ function chessboard(){
 }
 
 function boardreset(){
-    index = 0;
+    var index = 0;
     for(var i=0; i<4; i++){
         for(var j=0; j<4; j++){
             var span = document.getElementById('span'+index);
@@ -46,7 +47,7 @@ function boardreset(){
                     color = 'black';
                 }
             }
-            span.setAttribute('class', color);
+            span.className = color;
             index += 1;
         }
     }
@@ -57,5 +58,5 @@ chessboard();
 board.addEventListener('click', function(event){
     boardreset();
     var chess = document.getElementById(event.target.id);
-    chess.setAttribute('class', 'red');
+    chess.className = 'red';
 });

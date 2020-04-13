@@ -10,12 +10,13 @@ var todayPhoto = [
 ];
 
 var index = 0;
+var rowNum = 3;
 
 function setpage(index){
     var wrap = document.getElementById('wrap');
     var str = '';
-    for(var i=index*3; i<((index*3)+3); i++){
-        if(i == todayPhoto.length){
+    for(var i=index * rowNum; i<((index * rowNum) + rowNum); i++){
+        if(i === todayPhoto.length){
             break;
         }
         str += '<div class="imgs"><img src="'+todayPhoto[i].img+'"><div class="title">'+todayPhoto[i].title+'</div></div>';
