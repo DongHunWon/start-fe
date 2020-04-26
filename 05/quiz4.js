@@ -5,7 +5,7 @@ var mouseX = 0;
 var mouseY = 0;
 
 function mouseDown(e){
-    mouseX = e.sX;
+    mouseX = e.clientX;
     mouseY = e.clientY;
     box.addEventListener('mousemove', mouseMove);
     box.addEventListener('mouseup', mouseUp);
