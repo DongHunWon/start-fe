@@ -7,31 +7,42 @@ const $setpoint = 0;
 const $setlife = 10;
 let point = $setpoint;
 let life = $setlife;
+let $interval = null;
 
-$bug.addEventListener('click', bugPosition);
-$box.addEventListener('click', loseLife);
+$bug.addEventListener('click', bugClick);
+$box.addEventListener('click', boxClick);
 
-function bugPosition(){
-    let X = $box.clientWidth - $bug.clientWidth;
-    let Y = $box.clientHeight - $bug.clientHeight;
-
+function bugClick(){
     getPoint();
-    $bug.style.left = Math.random() * X + 'px';
-    $bug.style.top = Math.random() * Y + 'px';
-
+    bugPosition();
+    resetInterval();
     event.stopPropagation();
 }
 
-function getPoint(){
+function boxClick() {
+    loseLife();
+    bugPosition();
+    resetInterval();
+}
+
+function bugPosition() {
+    let X = $box.clientWidth - $bug.clientWidth;
+    let Y = $box.clientHeight - $bug.clientHeight;
+
+    $bug.style.left = Math.random() * X + 'px';
+    $bug.style.top = Math.random() * Y + 'px';
+}
+
+function getPoint() {
     point += 1;
     $point.innerHTML = point;
 }
 
-function loseLife(){
+function loseLife() {
     life -= 1;
-    if (life > 0){
+    if (life > 0) {
         $life.innerHTML = life;
-    } else if(life === 0) {
+    } else if (life === 0) {
         $life.innerHTML = life;
         alert('gameover');
     } else {
@@ -39,3 +50,7 @@ function loseLife(){
     }
 }
 
+function resetInterval() {
+    clearInterval($interval);
+    $interval = setInterval(bugPosition, 1000);
+}
