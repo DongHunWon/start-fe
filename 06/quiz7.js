@@ -9,48 +9,51 @@ let point = $setpoint;
 let life = $setlife;
 let $interval = null;
 
-$bug.addEventListener('click', bugClick);
-$box.addEventListener('click', boxClick);
-
-function bugClick(){
-    getPoint();
-    bugPosition();
-    resetInterval();
-    event.stopPropagation();
-}
-
-function boxClick() {
-    loseLife();
-    bugPosition();
-    resetInterval();
-}
-
 function bugPosition() {
-    let X = $box.clientWidth - $bug.clientWidth;
-    let Y = $box.clientHeight - $bug.clientHeight;
+  const X = $box.clientWidth - $bug.clientWidth;
+  const Y = $box.clientHeight - $bug.clientHeight;
 
-    $bug.style.left = Math.random() * X + 'px';
-    $bug.style.top = Math.random() * Y + 'px';
+  $bug.style.left = `${Math.random() * X  }px`;
+  $bug.style.top = `${Math.random() * Y  }px`;
 }
 
 function getPoint() {
-    point += 1;
-    $point.innerHTML = point;
+  point += 1;
+  $point.innerHTML = point;
 }
 
 function loseLife() {
-    life -= 1;
-    if (life > 0) {
-        $life.innerHTML = life;
-    } else if (life === 0) {
-        $life.innerHTML = life;
-        alert('gameover');
-    } else {
-        alert('gameover');
-    }
+  life -= 1;
+  if (life > 0) {
+    $life.innerHTML = life;
+  } else if (life === 0) {
+    $life.innerHTML = life;
+    // eslint-disable-next-line no-alert
+    alert('gameover');
+  } else {
+    // eslint-disable-next-line no-alert
+    alert('gameover');
+  }
 }
 
 function resetInterval() {
-    clearInterval($interval);
-    $interval = setInterval(bugPosition, 1000);
+  clearInterval($interval);
+  $interval = setInterval(bugPosition, 1000);
 }
+
+function boxClick() {
+  loseLife();
+  bugPosition();
+  resetInterval();
+}
+
+function bugClick() {
+  getPoint();
+  bugPosition();
+  resetInterval();
+  // eslint-disable-next-line no-restricted-globals
+  event.stopPropagation();
+}
+
+$bug.addEventListener('click', bugClick);
+$box.addEventListener('click', boxClick);
